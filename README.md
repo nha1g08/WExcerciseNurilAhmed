@@ -62,7 +62,7 @@ Example response:
 
 Products are located in src/main/resources/productList.csv, they will be persisted to the database at the start of the application. More products can be added but application will need to be restarted for changes to take effect.
 
-**Assumptions**
+### Assumptions
 
 productIds in productList.csv will be in chronological order
 
