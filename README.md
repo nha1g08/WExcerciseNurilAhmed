@@ -2,7 +2,11 @@
   
 Main method is located in Application class in com.worldpay
 
-**Below is an example to post an offer(offer expiry in ms):**
+**Below is an example to post an offer:**
+
+offer expiry in ms
+
+product id must match with the available ids on the productList.csv
 
 Method: POST
 
