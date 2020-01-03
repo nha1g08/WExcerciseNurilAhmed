@@ -1,15 +1,20 @@
 package com.worldpay.util;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 import com.opencsv.CSVReader;
@@ -24,15 +29,16 @@ public class ProductCreator {
 	@Autowired
 	ProductService productService;
 	
-	public void createProducts(){
-		String csvFile = "src/main/resources/productList.csv";
+	public void createProducts() throws IOException{
+		Resource resource = new ClassPathResource("productList.csv");
+		InputStream is = resource.getInputStream();
         BufferedReader br = null;
         String line = "";
         int linenumber=0;
         String csvSplitBy = ",";
         try {
 
-            br = new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new InputStreamReader(is));
             while ((line = br.readLine()) != null) {
             	if(linenumber == 0) {
             		linenumber++;
